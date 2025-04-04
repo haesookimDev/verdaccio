@@ -7,7 +7,11 @@ services:
     ports:
       - $VERDACCIO_IP:$VERDACCIO_PORT
     volumes:
-      - verdaccio-storage:/verdaccio/storage
+      - ../verdaccio-storage:/verdaccio/storage
 volumes:
   verdaccio-storage:
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/../verdaccio-storage
